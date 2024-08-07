@@ -35,6 +35,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/geist-sans": "^5.0.3",
+		"@splinetool/runtime": "^1.9.5",
 		"@sveltejs/adapter-static": "^3.0.2",
 		"@tauri-apps/api": "^1.6.0",
 		"@tauri-apps/cli": "^2.0.0-rc.1",
