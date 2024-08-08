@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tailwindcss/forms": "^0.5.7",
 		"@types/eslint": "^9.6.0",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.0.0",
@@ -35,6 +36,8 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/geist-sans": "^5.0.3",
+		"@fontsource/great-vibes": "^5.0.21",
+		"@fontsource/pacifico": "^5.0.13",
 		"@splinetool/runtime": "^1.9.5",
 		"@sveltejs/adapter-static": "^3.0.2",
 		"@tauri-apps/api": "^1.6.0",
