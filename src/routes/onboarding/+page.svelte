@@ -1,166 +1,87 @@
-<script lang="ts">
-	// Define your list of countries with their flags and codes
-	import { goto } from '$app/navigation';
-
-	const countries = [
-		{ name: 'Sweden', code: '+46', flag: '🇸🇪' },
-		{ name: 'United States', code: '+1', flag: '🇺🇸' },
-		{ name: 'Germany', code: '+49', flag: '🇩🇪' },
-		{ name: 'France', code: '+33', flag: '🇫🇷' },
-		{ name: 'United Kingdom', code: '+44', flag: '🇬🇧' }
-	];
-
-	// You might manage selected country with state or props
-	let selectedCountry = countries[0];
-</script>
+<script lang="ts" ✂prettier:content✂="Cg==">{}</script>
 
 <div
 	class="fixed inset-0 z-0 bg-gradient-to-br from-purple-900 via-purple-700 to-amber-500 opacity-80 backdrop-blur-lg"
 ></div>
 
-<section class="z-10 flex items-end h-full">
-	<div class="bg-[#1A1A2E]/80 text-[#E0E0E0] w-full relative h-[70%] p-4 rounded-t-xl">
-		<button class="absolute top-4 left-4">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 20 20"
-				fill="currentColor"
-				class="size-5"
+<section class="z-10 h-full grid grid-cols-6 grid-rows-10">
+	<div
+			class="bg-[#1A1A2E]/80 text-[#E0E0E0] w-full relative col-span-full row-start-1 grid grid-rows-12 row-span-full p-4"
+	>
+		<div class="text-white row-start-6 pt-10 flex flex-col gap-2 items-baseline">
+			<h1 class="text-4xl font-sans font-semibold tracking-tight text-[#E0E0E0]">Welcome!</h1>
+			<h4 class="text-sm font-medium font-sans text-[#B0B0B0]">
+				Let's start exploring!<br/>
+				Chose what do you search for
+			</h4>
+			<div
+					class="w-full rounded-lg mt-6 bg-zinc-700/40 shadow-lg shadow-[#1A1A2E] ring-1 ring-zinc-700"
 			>
-				<path
-					d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
-				/>
-			</svg>
-		</button>
-		<div class="flex justify-center flex-col items-center py-6 gap-2">
-			<img src="/lock-front-gradient.png" class="h-auto w-24" alt="" />
-			<div class="flex flex-col items-center gap-1 mt-4">
-				<h1 class="font-sans font-semibold text-3xl">Your data protected!</h1>
-				<h3 class="text-sm text-wrap text-[#B0B0B0]">
-					Enter your phone number. We will send you a confirmation
-				</h3>
-			</div>
-			<div class="flex flex-col items-center gap-6">
-				<div class="relative flex mt-4 gap-2 rounded-md shadow-sm">
-					<div>
-						<div class="relative">
-							<button
-								type="button"
-								class="relative w-[7rem] cursor-default bg-zinc-200 text-black rounded-xl py-2.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-								aria-haspopup="listbox"
-								aria-expanded="true"
-								aria-labelledby="listbox-label"
-							>
-								<span class="block truncate">🇸🇪 +46</span>
-								<span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-									<svg
-										class="h-5 w-5 text-gray-400"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								</span>
-							</button>
-
-							<!--
-                Select popover, show/hide based on select state.
-          
-                Entering: ""
-                  From: ""
-                  To: ""
-                Leaving: "transition ease-in duration-100"
-                  From: "opacity-100"
-                  To: "opacity-0"
-              -->
-							<!--              <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">-->
-							<!--                &lt;!&ndash;-->
-							<!--                  Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.-->
-							<!--          -->
-							<!--                  Highlighted: "bg-indigo-600 text-white", Not Highlighted: "text-gray-900"-->
-							<!--                &ndash;&gt;-->
-							<!--                {#each countries as country, index}-->
-							<!--                  &lt;!&ndash;                      on:click={() => selectedCountry = country}&ndash;&gt;-->
-							<!--                  -->
-							<!--                  <li-->
-							<!--                      class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900"-->
-							<!--                      id={"listbox-option-" + index}-->
-							<!--                      role="option"-->
-							<!--                      class:selected="{country === selectedCountry}"-->
-							<!--                  >-->
-							<!--                    &lt;!&ndash; Display flag and country code &ndash;&gt;-->
-							<!--                    <span class="block truncate font-normal">{country.flag} {country.code}</span>-->
-							<!--                    -->
-							<!--                    &lt;!&ndash; Checkmark, only display for selected option &ndash;&gt;-->
-							<!--                    {#if country === selectedCountry}-->
-							<!--        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">-->
-							<!--          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">-->
-							<!--            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />-->
-							<!--          </svg>-->
-							<!--        </span>-->
-							<!--                    {/if}-->
-							<!--                  </li>-->
-							<!--                {/each}-->
-							<!--                -->
-							<!--                &lt;!&ndash; More items... &ndash;&gt;-->
-							<!--              </ul>-->
+				<ul role="list" class="divide-y divide-zinc-700">
+					<li class="px-6 py-4 text-black flex items-center justify-between">
+						<!-- Your content -->
+						<div class="flex items-center gap-2">
+							<img src="/key-front-gradient.png" class="h-auto w-16" alt=""/>
+							<div class="text-white text-sm">
+								<h3 class="font-bold">Apartments</h3>
+								<div class="text-xs">Find your perfect rental property!</div>
+							</div>
 						</div>
-					</div>
-
-					<input
-						type="text"
-						name="phone-number"
-						id="phone-number"
-						class="block rounded-xl bg-zinc-200 w-full outline-none ring-1 ring-inset ring-gray-700 border-0 py-1.5 focus:outline-none focus:ring-0 text-gray-900 placeholder:text-gray-500 focus:bg-zinc-100 sm:text-sm sm:leading-6"
-						placeholder="+46 (73) 987-6543"
-					/>
-				</div>
-				<button
-					onclick={() => {
-						goto('/onboarding');
-					}}
-					type="button"
-					class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-				>
-					Sign up
-				</button>
-				<div class="relative w-full">
-					<div class="absolute inset-0 flex items-center" aria-hidden="true">
-						<div class="w-full border-t border-gray-600"></div>
-					</div>
-					<div class="relative flex justify-center">
-						<span class="px-2 text-sm bg-gray-200 text-black rounded-lg">or</span>
-					</div>
-				</div>
-				<div class="flex flex-col gap-4 w-full">
-					<button
-						type="button"
-						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-purple-200 px-4 py-1 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>
-						<img src="/BankID.svg" class="-ml-0.5 h-10 w-auto" alt="" />
-						Sign up with BankId
-					</button>
-					<button
-						type="button"
-						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-purple-200 px-4 py-1 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>
-						<img
-							src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-							class="-ml-0.5 h-10 w-auto"
-							alt=""
-						/>
-						Sign up with Google
-					</button>
-					<div class="font-medium text-[#B0B0B0] text-sm flex gap-2 justify-center">
-						Arleady have an account?<span class="text-amber-300 font-bold">Log in</span>
-					</div>
-				</div>
+						<button
+								type="button"
+								class="rounded-full bg-amber-400 px-2.5 py-1 text-xs font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						>Choose
+						</button
+						>
+					</li>
+					<li class="px-6 py-4 text-black flex items-center justify-between">
+						<!-- Your content -->
+						<div class="flex items-center gap-2">
+							<img src="/medal-front-gradient.png" class="h-auto w-16" alt=""/>
+							<div class="text-white text-sm">
+								<h3 class="font-bold">House</h3>
+								<div class="text-xs">Find your perfect rental property!</div>
+							</div>
+						</div>
+						<button
+								type="button"
+								class="rounded-full bg-amber-400 px-2.5 py-1 text-xs font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						>Choose
+						</button
+						>
+					</li>
+					<li class="px-6 py-4 text-black flex items-center justify-between">
+						<!-- Your content -->
+						<div class="flex items-center gap-2">
+							<img src="/boy-front-gradient.png" class="h-auto w-16" alt=""/>
+							<div class="text-white text-sm">
+								<h3 class="font-bold">Roommate</h3>
+								<div class="text-xs">Find your perfect soulmate!</div>
+							</div>
+						</div>
+						<button
+								type="button"
+								class="rounded-full bg-amber-400 px-2.5 py-1 text-xs font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						>Choose
+						</button
+						>
+					</li>
+					
+					<!-- More items... -->
+				</ul>
 			</div>
 		</div>
+	</div>
+	<div class="row-start-1 row-end-5 col-span-full h-full relative z-[999]">
+		<div
+				class="bg-gradient-to-br from-purple-900 via-purple-700 to-amber-500 opacity-80 text-[#E0E0E0] relative -translate-x-1/2 inset-x-1/2 transform w-[185%] p-4 text-center h-full col-span-full rounded-b-[100%] z-50 flex"
+		>
+			<img src="/star-front-gradient.png" alt="" class=" h-auto w-28 m-auto col-start-2 z-50"/>
+		</div>
+	</div>
+	<div class="row-start-1 row-end-5 col-span-full h-full relative z-0">
+		<div
+				class="bg-gradient-to-br from-purple-900 z-0 via-purple-700 to-amber-500 opacity-80 text-[#E0E0E0] relative -translate-x-1/2 inset-x-1/2 transform w-[185%] p-4 text-center h-full col-span-full rounded-b-[100%] blur-2xl"
+		></div>
 	</div>
 </section>

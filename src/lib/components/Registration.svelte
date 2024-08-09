@@ -1,28 +1,9 @@
-<script lang="ts">
-	// Define your list of countries with their flags and codes
-	import { goto } from '$app/navigation';
-	import { fly } from 'svelte/transition';
-	import { showRegistration } from '$lib/states.svelte';
-
-	const countries = [
-		{ name: 'Sweden', code: '+46', flag: '🇸🇪' },
-		{ name: 'United States', code: '+1', flag: '🇺🇸' },
-		{ name: 'Germany', code: '+49', flag: '🇩🇪' },
-		{ name: 'France', code: '+33', flag: '🇫🇷' },
-		{ name: 'United Kingdom', code: '+44', flag: '🇬🇧' }
-	];
-	// You might manage selected country with state or props
-	let selectedCountry = countries[0];
-
-	function closePopup() {
-		showRegistration.showRegistration = !showRegistration.showRegistration;
-	}
-</script>
+<script lang="ts" ✂prettier:content✂="CgkvLyBEZWZpbmUgeW91ciBsaXN0IG9mIGNvdW50cmllcyB3aXRoIHRoZWlyIGZsYWdzIGFuZCBjb2RlcwoJaW1wb3J0IHsgZ290byB9IGZyb20gJyRhcHAvbmF2aWdhdGlvbic7CglpbXBvcnQge2ZhZGUsIGZseX0gZnJvbSAnc3ZlbHRlL3RyYW5zaXRpb24nOwoJaW1wb3J0IHtpc0Rpc3BsYXllZH0gZnJvbSAnJGxpYi9zdGF0ZXMuc3ZlbHRlJzsKCgljb25zdCBjb3VudHJpZXMgPSBbCgkJeyBuYW1lOiAnU3dlZGVuJywgY29kZTogJys0NicsIGZsYWc6ICfwn4e48J+HqicgfSwKCQl7IG5hbWU6ICdVbml0ZWQgU3RhdGVzJywgY29kZTogJysxJywgZmxhZzogJ/Cfh7rwn4e4JyB9LAoJCXsgbmFtZTogJ0dlcm1hbnknLCBjb2RlOiAnKzQ5JywgZmxhZzogJ/Cfh6nwn4eqJyB9LAoJCXsgbmFtZTogJ0ZyYW5jZScsIGNvZGU6ICcrMzMnLCBmbGFnOiAn8J+Hq/Cfh7cnIH0sCgkJeyBuYW1lOiAnVW5pdGVkIEtpbmdkb20nLCBjb2RlOiAnKzQ0JywgZmxhZzogJ/Cfh6zwn4enJyB9CgldOwoJLy8gWW91IG1pZ2h0IG1hbmFnZSBzZWxlY3RlZCBjb3VudHJ5IHdpdGggc3RhdGUgb3IgcHJvcHMKCWxldCBzZWxlY3RlZENvdW50cnkgPSBjb3VudHJpZXNbMF07CgoJZnVuY3Rpb24gY2xvc2VQb3B1cCgpIHsKCQlpc0Rpc3BsYXllZC52aXNpYmxlID0gIWlzRGlzcGxheWVkLnZpc2libGU7Cgl9Cg==">{}</script>
 
 <section
 	in:fly={{ y: 300, duration: 500 }}
 	out:fly={{ y: 300, duration: 250 }}
-	class="z-50 fixed w-full flex items-end h-full"
+	class="z-50 fixed w-full flex items-end bottom-0"
 >
 	<div class="bg-[#1A1A2E]/90 text-[#E0E0E0] w-full relative h-[70%] p-4 rounded-t-xl">
 		<button onclick={closePopup} class="absolute top-4 left-4">
@@ -45,7 +26,7 @@
 					Enter your phone number. We will send you a confirmation
 				</h3>
 			</div>
-			<div class="flex flex-col items-center gap-6">
+			<div class="flex flex-col items-center gap-6 overflow-hidden">
 				<div class="relative flex mt-4 gap-2 rounded-md shadow-sm">
 					<div>
 						<div class="relative">
@@ -122,18 +103,33 @@
 						name="phone-number"
 						id="phone-number"
 						class="block rounded-xl bg-zinc-200 w-full outline-none ring-1 ring-inset ring-gray-700 border-0 py-1.5 focus:outline-none focus:ring-0 text-gray-900 placeholder:text-gray-500 focus:bg-zinc-100 sm:text-sm sm:leading-6"
-						placeholder="+46 (73) 987-6543"
+						placeholder="(73) 987-6543"
 					/>
 				</div>
-				<button
-					onclick={() => {
-						goto('/onboarding');
-					}}
-					type="button"
-					class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-				>
-					Sign up
-				</button>
+				{#if isDisplayed.isRegister}
+					<button
+							in:fade={{ duration: 500 }}
+							onclick={() => {
+							goto('/onboarding');
+						}}
+							type="button"
+							class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+					>
+						Sign up
+					</button>
+				{:else}
+					<button
+							in:fade={{ duration: 500 }}
+							onclick={() => {
+							goto('/onboarding');
+						}}
+							type="button"
+							class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+					>
+						Log in
+					</button>
+				{/if}
+				
 				<div class="relative w-full">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-gray-600"></div>
@@ -148,7 +144,7 @@
 						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-purple-200 px-4 py-1 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
 						<img src="/BankID.svg" class="-ml-0.5 h-10 w-auto" alt="" />
-						Sign up with BankId
+						{isDisplayed.isRegister ? 'Log in' : 'Continue'} with BankId
 					</button>
 					<button
 						type="button"
@@ -159,10 +155,17 @@
 							class="-ml-0.5 h-10 w-auto"
 							alt=""
 						/>
-						Sign up with Google
+						{isDisplayed.isRegister ? 'Log in' : 'Continue'} with Google
 					</button>
 					<div class="font-medium text-[#B0B0B0] text-sm flex gap-2 justify-center">
-						Arleady have an account?<span class="text-amber-300 font-bold">Log in</span>
+						{isDisplayed.isRegister ? 'Arleady have an account?' : 'Dont have an account?'}
+						<button
+								onclick={() => {
+								isDisplayed.isRegister = false;
+							}}
+								class="text-amber-300 font-bold"
+						>{isDisplayed.isRegister ? 'Log in' : 'Register'}</button
+						>
 					</div>
 				</div>
 			</div>

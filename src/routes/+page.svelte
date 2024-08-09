@@ -1,9 +1,7 @@
-<script ✂prettier:content✂="CiAgICBpbXBvcnQge2ZseX0gZnJvbSAic3ZlbHRlL3RyYW5zaXRpb24iOwogICAgaW1wb3J0IHtzaG93UmVnaXN0cmF0aW9ufSBmcm9tICIkbGliL3N0YXRlcy5zdmVsdGUiOwogICAgaW1wb3J0IFJlZ2lzdHJhdGlvbiBmcm9tICIkbGliL2NvbXBvbmVudHMvUmVnaXN0cmF0aW9uLnN2ZWx0ZSI7CiAgICBpbXBvcnQgV2VsY29tZVNjcmVlbiBmcm9tICIkbGliL2NvbXBvbmVudHMvV2VsY29tZVNjcmVlbi5zdmVsdGUiOwogICAK">{}</script>
+<script ✂prettier:content✂="CglpbXBvcnQgV2VsY29tZVNjcmVlbiBmcm9tICckbGliL2NvbXBvbmVudHMvV2VsY29tZVNjcmVlbi5zdmVsdGUnOwoJaW1wb3J0IHtpc0Rpc3BsYXllZH0gZnJvbSAnJGxpYi9zdGF0ZXMuc3ZlbHRlJzsKCWltcG9ydCBSZWdpc3RyYXRpb24gZnJvbSAnJGxpYi9jb21wb25lbnRzL1JlZ2lzdHJhdGlvbi5zdmVsdGUnOwo=">{}</script>
 
 <WelcomeScreen/>
 
-{#if showRegistration.showRegistration}
-  <Registration/>
+{#if isDisplayed.visible}
+	<Registration/>
 {/if}
-
-<style ✂prettier:content✂="CiAgICAvKiBPcHRpb25hbDogQWRkIHN0eWxlcyBoZXJlICovCg=="></style>
