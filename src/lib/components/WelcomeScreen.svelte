@@ -1,4 +1,23 @@
-<script lang="ts" ✂prettier:content✂="CglpbXBvcnQgeyBBcHBsaWNhdGlvbiB9IGZyb20gJ0BzcGxpbmV0b29sL3J1bnRpbWUnOwoJaW1wb3J0IHsgZmx5LCBmYWRlIH0gZnJvbSAnc3ZlbHRlL3RyYW5zaXRpb24nOwoJCglpbXBvcnQge2lzRGlzcGxheWVkfSBmcm9tICckbGliL3N0YXRlcy5zdmVsdGUnOwoKCWxldCBzaG93VGV4dCA9ICRzdGF0ZShmYWxzZSk7CglsZXQgc2hvd0Jsb2IgPSAkc3RhdGUoZmFsc2UpOwoKCSRlZmZlY3QoKCkgPT4gewoJCWNvbnN0IGNhbnZhcyA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjYW52YXMzZCcpOwoJCWNvbnN0IGFwcCA9IG5ldyBBcHBsaWNhdGlvbihjYW52YXMgYXMgSFRNTENhbnZhc0VsZW1lbnQpOwoKCQlhcHAubG9hZCgnaHR0cHM6Ly9wcm9kLnNwbGluZS5kZXNpZ24vRE9yVnBRVU1jNmRwYXFEOS9zY2VuZS5zcGxpbmVjb2RlJykudGhlbigoKSA9PiB7CgkJCWFwcC5zZXRab29tKDAuNSk7CgkJCXNob3dUZXh0ID0gdHJ1ZTsKCQkJc2hvd0Jsb2IgPSB0cnVlOwoJCX0pOwoJfSk7Cg==">{}</script>
+<script lang="ts">
+	import { Application } from '@splinetool/runtime';
+	import { fly, fade } from 'svelte/transition';
+	import { goto } from '$app/navigation';
+	import {isDisplayed} from '$lib/states.svelte';
+	
+	let showText = $state(false);
+	let showBlob = $state(false);
+	
+	$effect(() => {
+		const canvas = document.getElementById('canvas3d');
+		const app = new Application(canvas as HTMLCanvasElement);
+		
+		app.load('https://prod.spline.design/DOrVpQUMc6dpaqD9/scene.splinecode').then(() => {
+			app.setZoom(0.5);
+			showText = true;
+			showBlob = true;
+		});
+	});
+</script>
 
 <div
 	class="fixed inset-0 bg-gradient-to-br from-purple-900 via-purple-700 to-amber-500 opacity-80"

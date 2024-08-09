@@ -1,4 +1,23 @@
-<script lang="ts" ✂prettier:content✂="CgkvLyBEZWZpbmUgeW91ciBsaXN0IG9mIGNvdW50cmllcyB3aXRoIHRoZWlyIGZsYWdzIGFuZCBjb2RlcwoJaW1wb3J0IHsgZ290byB9IGZyb20gJyRhcHAvbmF2aWdhdGlvbic7CglpbXBvcnQge2ZhZGUsIGZseX0gZnJvbSAnc3ZlbHRlL3RyYW5zaXRpb24nOwoJaW1wb3J0IHtpc0Rpc3BsYXllZH0gZnJvbSAnJGxpYi9zdGF0ZXMuc3ZlbHRlJzsKCgljb25zdCBjb3VudHJpZXMgPSBbCgkJeyBuYW1lOiAnU3dlZGVuJywgY29kZTogJys0NicsIGZsYWc6ICfwn4e48J+HqicgfSwKCQl7IG5hbWU6ICdVbml0ZWQgU3RhdGVzJywgY29kZTogJysxJywgZmxhZzogJ/Cfh7rwn4e4JyB9LAoJCXsgbmFtZTogJ0dlcm1hbnknLCBjb2RlOiAnKzQ5JywgZmxhZzogJ/Cfh6nwn4eqJyB9LAoJCXsgbmFtZTogJ0ZyYW5jZScsIGNvZGU6ICcrMzMnLCBmbGFnOiAn8J+Hq/Cfh7cnIH0sCgkJeyBuYW1lOiAnVW5pdGVkIEtpbmdkb20nLCBjb2RlOiAnKzQ0JywgZmxhZzogJ/Cfh6zwn4enJyB9CgldOwoJLy8gWW91IG1pZ2h0IG1hbmFnZSBzZWxlY3RlZCBjb3VudHJ5IHdpdGggc3RhdGUgb3IgcHJvcHMKCWxldCBzZWxlY3RlZENvdW50cnkgPSBjb3VudHJpZXNbMF07CgoJZnVuY3Rpb24gY2xvc2VQb3B1cCgpIHsKCQlpc0Rpc3BsYXllZC52aXNpYmxlID0gIWlzRGlzcGxheWVkLnZpc2libGU7Cgl9Cg==">{}</script>
+<script lang="ts">
+	// Define your list of countries with their flags and codes
+	import { goto } from '$app/navigation';
+	import { fade, fly } from 'svelte/transition';
+	import { isDisplayed } from '$lib/states.svelte';
+
+	const countries = [
+		{ name: 'Sweden', code: '+46', flag: '🇸🇪' },
+		{ name: 'United States', code: '+1', flag: '🇺🇸' },
+		{ name: 'Germany', code: '+49', flag: '🇩🇪' },
+		{ name: 'France', code: '+33', flag: '🇫🇷' },
+		{ name: 'United Kingdom', code: '+44', flag: '🇬🇧' }
+	];
+	// You might manage selected country with state or props
+	let selectedCountry = countries[0];
+
+	function closePopup() {
+		isDisplayed.visible = !isDisplayed.visible;
+	}
+</script>
 
 <section
 	in:fly={{ y: 300, duration: 500 }}
@@ -108,28 +127,28 @@
 				</div>
 				{#if isDisplayed.isRegister}
 					<button
-							in:fade={{ duration: 500 }}
-							onclick={() => {
+						in:fade={{ duration: 500 }}
+						onclick={() => {
 							goto('/onboarding');
 						}}
-							type="button"
-							class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+						type="button"
+						class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 					>
 						Sign up
 					</button>
 				{:else}
 					<button
-							in:fade={{ duration: 500 }}
-							onclick={() => {
+						in:fade={{ duration: 500 }}
+						onclick={() => {
 							goto('/onboarding');
 						}}
-							type="button"
-							class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+						type="button"
+						class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 					>
 						Log in
 					</button>
 				{/if}
-				
+
 				<div class="relative w-full">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-gray-600"></div>
@@ -160,11 +179,11 @@
 					<div class="font-medium text-[#B0B0B0] text-sm flex gap-2 justify-center">
 						{isDisplayed.isRegister ? 'Arleady have an account?' : 'Dont have an account?'}
 						<button
-								onclick={() => {
+							onclick={() => {
 								isDisplayed.isRegister = false;
 							}}
-								class="text-amber-300 font-bold"
-						>{isDisplayed.isRegister ? 'Log in' : 'Register'}</button
+							class="text-amber-300 font-bold"
+							>{isDisplayed.isRegister ? 'Log in' : 'Register'}</button
 						>
 					</div>
 				</div>
