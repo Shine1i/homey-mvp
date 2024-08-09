@@ -2,15 +2,15 @@
 	import { Application } from '@splinetool/runtime';
 	import { fly, fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
-	import {isDisplayed} from '$lib/states.svelte';
-	
+	import { isDisplayed } from '$lib/states.svelte';
+
 	let showText = $state(false);
 	let showBlob = $state(false);
-	
+
 	$effect(() => {
 		const canvas = document.getElementById('canvas3d');
 		const app = new Application(canvas as HTMLCanvasElement);
-		
+
 		app.load('https://prod.spline.design/DOrVpQUMc6dpaqD9/scene.splinecode').then(() => {
 			app.setZoom(0.5);
 			showText = true;
@@ -48,8 +48,8 @@
 				</div>
 			</div>
 			<div
-					in:fly={{ x: -300, duration: 1000 }}
-					class="text-white font-sans -skew-x-12 tracking-wide text-lg text-opacity-80"
+				in:fly={{ x: -300, duration: 1000 }}
+				class="text-white font-sans -skew-x-12 tracking-wide text-lg text-opacity-80"
 			>
 				Match with your dream space
 			</div>
@@ -68,7 +68,7 @@
 			Sign up
 		</button>
 		<button
-				onclick={() => {
+			onclick={() => {
 				isDisplayed.visible = true;
 				isDisplayed.isRegister = false;
 			}}
@@ -80,4 +80,40 @@
 	</div>
 </div>
 
-<style ✂prettier:content✂="CgkjY2FudmFzM2QgewoJCW1heC13aWR0aDogMTAwdnc7CgkJbWF4LWhlaWdodDogNzB2aDsKCQlvYmplY3QtZml0OiBjb250YWluOwoJfQoKCS5jdXJ2ZWQtdGV4dCB7CgkJdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC0yMHB4KTsKCX0KCgkuY3VydmVkLXRleHQgc3BhbiB7CgkJcG9zaXRpb246IHJlbGF0aXZlOwoJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQl0cmFuc2Zvcm0tb3JpZ2luOiA1MCUgMTAwJTsKCX0KCgkuY3VydmVkLXRleHQgc3BhbjpudGgtY2hpbGQoMSkgewoJCXRyYW5zZm9ybTogcm90YXRlKC0yMGRlZyk7Cgl9CgoJLmN1cnZlZC10ZXh0IHNwYW46bnRoLWNoaWxkKDIpIHsKCQl0cmFuc2Zvcm06IHJvdGF0ZSgtMTBkZWcpOwoJfQoKCS5jdXJ2ZWQtdGV4dCBzcGFuOm50aC1jaGlsZCgzKSB7CgkJdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7Cgl9CgoJLmN1cnZlZC10ZXh0IHNwYW46bnRoLWNoaWxkKDQpIHsKCQl0cmFuc2Zvcm06IHJvdGF0ZSgxMGRlZyk7Cgl9CgoJLmN1cnZlZC10ZXh0IHNwYW46bnRoLWNoaWxkKDUpIHsKCQl0cmFuc2Zvcm06IHJvdGF0ZSgyMGRlZyk7Cgl9Cg=="></style>
+<style>
+	#canvas3d {
+		max-width: 100vw;
+		max-height: 70vh;
+		object-fit: contain;
+	}
+
+	.curved-text {
+		transform: translateY(-20px);
+	}
+
+	.curved-text span {
+		position: relative;
+		display: inline-block;
+		transform-origin: 50% 100%;
+	}
+
+	.curved-text span:nth-child(1) {
+		transform: rotate(-20deg);
+	}
+
+	.curved-text span:nth-child(2) {
+		transform: rotate(-10deg);
+	}
+
+	.curved-text span:nth-child(3) {
+		transform: rotate(0deg);
+	}
+
+	.curved-text span:nth-child(4) {
+		transform: rotate(10deg);
+	}
+
+	.curved-text span:nth-child(5) {
+		transform: rotate(20deg);
+	}
+</style>

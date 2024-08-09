@@ -74,15 +74,15 @@
 							</button>
 
 							<!--
-                Select popover, show/hide based on select state.
-          
-                Entering: ""
-                  From: ""
-                  To: ""
-                Leaving: "transition ease-in duration-100"
-                  From: "opacity-100"
-                  To: "opacity-0"
-              -->
+Select popover, show/hide based on select state.
+
+Entering: ""
+From: ""
+To: ""
+Leaving: "transition ease-in duration-100"
+From: "opacity-100"
+To: "opacity-0"
+-->
 							<!--              <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">-->
 							<!--                &lt;!&ndash;-->
 							<!--                  Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.-->
