@@ -6,7 +6,7 @@
 	import { steps } from '$lib/states.svelte';
 	import { fly } from 'svelte/transition';
 	import LocationTab from '$lib/components/onboarding/LocationTab.svelte';
-	$inspect(steps);
+	import ProfileTab from '$lib/components/onboarding/ProfileTab.svelte';
 </script>
 
 <div
@@ -17,6 +17,7 @@
 	</div>
 	<div class="absolute h-full w-full bg-[#1A1A2E]/80"></div>
 	<div
+		class:!h-[25%]={steps.currentStep === 0}
 		class="h-2/6 scale-150 rounded-b-[100%] bg-gradient-to-br from-purple-900 via-purple-700 to-amber-500 blur"
 	></div>
 	<main class="absolute overflow-hidden h-full w-full flex flex-col justify-between">
@@ -69,7 +70,9 @@
 		{#if steps.currentStep === 2}
 			<LocationTab />
 		{/if}
-		{#if steps.currentStep === 3}{/if}
+		{#if steps.currentStep === 3}
+			<ProfileTab />
+		{/if}
 		{#if steps.currentStep === 0}
 			<section in:fly={{ x: 300, duration: 350 }} class="flex pb-4 px-4">
 				<div class="row-start-6 flex flex-col items-baseline gap-2 pt-10 text-white">
