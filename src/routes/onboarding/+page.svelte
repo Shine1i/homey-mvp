@@ -7,6 +7,8 @@
 	import { fly } from 'svelte/transition';
 	import LocationTab from '$lib/components/onboarding/LocationTab.svelte';
 	import ProfileTab from '$lib/components/onboarding/ProfileTab.svelte';
+	import InterestsTab from '$lib/components/onboarding/InterestsTab.svelte';
+	import { goto } from '$app/navigation';
 </script>
 
 <div
@@ -18,6 +20,7 @@
 	<div class="absolute h-full w-full bg-[#1A1A2E]/80"></div>
 	<div
 		class:!h-[25%]={steps.currentStep === 0}
+		class:!h-[25%]={steps.currentStep === 4}
 		class="h-2/6 scale-150 rounded-b-[100%] bg-gradient-to-br from-purple-900 via-purple-700 to-amber-500 blur"
 	></div>
 	<main class="absolute overflow-hidden h-full w-full flex flex-col justify-between">
@@ -60,7 +63,7 @@
 					in:fly={{ x: 300, duration: 350 }}
 					src="/color-palette-front-gradient.png"
 					alt=""
-					class="m-auto h-auto w-28"
+					class="m-auto h-auto w-28 pt-8"
 				/>
 			{/if}
 		</section>
@@ -73,8 +76,11 @@
 		{#if steps.currentStep === 3}
 			<ProfileTab />
 		{/if}
+		{#if steps.currentStep === 4}
+			<InterestsTab />
+		{/if}
 		{#if steps.currentStep === 0}
-			<section in:fly={{ x: 300, duration: 350 }} class="flex pb-4 px-4">
+			<section in:fly={{ x: 300, duration: 350 }} class="flex pb-4 px-4 mx-auto">
 				<div class="row-start-6 flex flex-col items-baseline gap-2 pt-10 text-white">
 					<h1 class="font-sans text-4xl font-semibold tracking-tight text-[#E0E0E0]">Welcome!</h1>
 					<h4 class="font-sans text-sm font-medium text-[#B0B0B0]">
@@ -84,8 +90,8 @@
 					<div
 						class="mt-6 w-full rounded-lg bg-zinc-700/40 shadow-lg shadow-[#1A1A2E] ring-1 ring-zinc-700"
 					>
-						<ul role="list" class="divide-y divide-zinc-700">
-							<li class="flex items-center justify-between px-6 py-4 text-black">
+						<ul role="list" class="divide-y divide-zinc-700 mx-auto pr-2">
+							<li class="flex items-center px-2 justify-between gap-6 py-4 text-black">
 								<!-- Your content -->
 								<div class="flex items-center gap-2">
 									<img src="/key-front-gradient.png" class="h-auto w-16" alt="" />
@@ -103,7 +109,7 @@
 									>Choose</button
 								>
 							</li>
-							<li class="flex items-center justify-between px-6 py-4 text-black">
+							<li class="flex items-center gap-6 px-2 justify-between py-4 text-black">
 								<!-- Your content -->
 								<div class="flex items-center gap-2">
 									<img src="/medal-front-gradient.png" class="h-auto w-16" alt="" />
@@ -121,7 +127,7 @@
 									>Choose</button
 								>
 							</li>
-							<li class="flex items-center justify-between px-6 py-4 text-black">
+							<li class="flex items-center gap-6 px-2 justify-between py-4 text-black">
 								<!-- Your content -->
 								<div class="flex items-center gap-2">
 									<img src="/boy-front-gradient.png" class="h-auto w-16" alt="" />
@@ -131,8 +137,10 @@
 									</div>
 								</div>
 								<button
+									onclick={() => {
+										goto('/home');
+									}}
 									type="button"
-									disabled
 									class="rounded-full bg-amber-400/40 px-2.5 text-nowrap py-1 text-xs font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 									>coming soon</button
 								>

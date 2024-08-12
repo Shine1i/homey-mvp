@@ -30,7 +30,7 @@
 			{#if showBlob}
 				<div
 					in:fade={{ duration: 1000 }}
-					class="absolute bottom-14 left-1/2 transform -translate-x-1/2 w-72 h-72 bg-purple-300 rounded-full filter blur-xl opacity-70"
+					class="absolute bottom-14 left-1/2 transform animate-pulse -translate-x-1/2 w-72 h-72 bg-purple-300 rounded-full filter blur-xl opacity-70"
 				></div>
 			{/if}
 		</div>

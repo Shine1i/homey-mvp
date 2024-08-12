@@ -3,6 +3,6 @@ export let isDisplayed = $state<{ visible: boolean; isRegister: undefined | bool
 	isRegister: undefined
 });
 export let steps = $state({
-	total: [0, 1, 2, 3, 4],
+	total: [0, 1, 2, 3],
 	currentStep: 0
 });

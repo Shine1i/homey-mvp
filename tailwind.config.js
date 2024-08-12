@@ -19,7 +19,7 @@ export default {
 				background: '#1C1E1F'
 			},
 			animation: {
-				blob: 'blob 7s infinite'
+				blob: 'blob 12s infinite'
 			},
 			keyframes: {
 				blob: {

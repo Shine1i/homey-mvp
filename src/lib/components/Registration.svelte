@@ -166,6 +166,9 @@ To: "opacity-0"
 						{isDisplayed.isRegister ? 'Log in' : 'Continue'} with BankId
 					</button>
 					<button
+						onclick={() => {
+							goto('/onboarding');
+						}}
 						type="button"
 						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-purple-200 px-4 py-1 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>

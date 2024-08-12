@@ -1,5 +1,9 @@
 <script>
 	import '../app.pcss';
+	import 'swiper/css/bundle';
+	import { register } from 'swiper/element/bundle';
+	// register Swiper custom elements
+	register();
 </script>
 
 <main class="flex flex-col overflow-hidden justify-between w-dvw min-h-dvh h-dvh bg-[#1A1A2E]">
