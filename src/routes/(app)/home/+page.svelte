@@ -1,186 +1,77 @@
 <script>
-	import Swiper from 'swiper/bundle';
-
-	// import styles bundle
-	var swiper = new Swiper('.mySwiper', {
-		effect: 'cards',
-		grabCursor: true
-	});
+	import {
+		Icon,
+		Home,
+		BookmarkSquare,
+		Map,
+		User,
+		MapPin,
+		ChevronDoubleDown,
+		ChevronDown,
+		AdjustmentsHorizontal,
+		Bell
+	} from 'svelte-hero-icons';
+	const buttons = [
+		{ text: 'Nearby', current: true },
+		{ text: 'Shared', current: false },
+		{ text: 'Upcoming', current: false }
+	];
 </script>
 
-<!-- Swiper -->
-
-<swiper-container
-	class="mySwiper relative w-full bg-gradient-to-b from-violet-900/45 pl-3.5 rounded-3xl to-transparent h-full py-1 flex"
-	effect="cards"
-	grab-cursor="true"
->
-	<swiper-slide class="h-full min-w-full p-4 !pr-2 rounded-3xl overflow-hidden z-10">
-		<img
-			src="https://homeq-media-live.s3.amazonaws.com/1440/apartment_images/94a02a41446c470babbeceddfdb25cde.jpeg"
-			alt="Empire Heights Apartment"
-			class="object-cover w-full h-full relative z-10 rounded-3xl"
-		/>
-		<div class="absolute bottom-0 left-0 p-4 px-8 pb-7 text-white z-10 flex flex-col w-full">
-			<h2 class="text-3xl font-bold mb-1">Empire Heights</h2>
-			<div class="flex w-full justify-between">
-				<div class="">
-					<div class="flex items-center text-sm mb-1">
-						<svg
-							class="w-4 h-4 mr-1"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-							></path>
-						</svg>
-						1500 sq ft
-					</div>
-					<div class="flex items-center text-sm mb-2">
-						<svg
-							class="w-4 h-4 mr-1"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-							></path>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-							></path>
-						</svg>
-						Asheville, NC
-					</div>
+<div class=" flex flex-col gap-5 col-span-full">
+	<!--  bg-purple-700-->
+	<div
+		class="bg-black p-4 flex flex-col h-fit mt-2 rounded-xl gap-5 col-span-full bg-opacity-30 backdrop-filter backdrop-blur-lg"
+	>
+		<section class="flex justify-between">
+			<div class="flex flex-col text-gray-200 gap-0.5">
+				<div class="text-sm pl-0.5">Location</div>
+				<div class="font-bold text-white text-sm flex gap-1">
+					<Icon src={MapPin} class="size-5 text-violet-200" />
+					New York, USA
+					<Icon src={ChevronDown} class="size-5 text-violet-200" />
 				</div>
-				<div class="text-2xl font-extrabold">7700 SEK</div>
 			</div>
+			<button
+				type="button"
+				class="rounded-xl bg-[#1A1A2E]/80 p-1.5 border-b border-amber-400 px-2.5 text-violet-200 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+			>
+				<Icon src={Bell} class="size-5 stroke-violet-200" />
+			</button>
+		</section>
+		<div class="flex items-center w-full justify-evenly gap-2">
+			<span
+				class="isolate bg-[#1A1A2E]/80 ring-1 w-full justify-evenly ring-slate-800 border-b text-violet-200 border-amber-400 border-opacity-85 py-1 rounded-lg flex gap-3"
+			>
+				{#each buttons as button, index}
+					<button
+						type="button"
+						class="relative inline-flex items-center tracking-wider px-3.5 py-2 text-sm focus:z-10 {index ===
+						0
+							? 'rounded-l-md'
+							: ''} {index === buttons.length - 1 ? 'rounded-r-md' : '-ml-px'}"
+					>
+						{#if button.current}
+							<span
+								class="absolute top-1 left-1/2 transform -translate-x-1/2 -translate-y-1 bg-amber-400 h-1.5 w-1.5 rounded-full"
+							></span>
+						{/if}
+						{button.text}
+					</button>
+				{/each}
+			</span>
+			<button
+				type="button"
+				class="rounded-xl border-b border-amber-400 border-opacity-85 bg-gray-900/55 p-3 px-2.5 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+			>
+				<Icon src={AdjustmentsHorizontal} class="size-5 stroke-violet-200" />
+			</button>
 		</div>
-		<div
-			class="absolute top-2 right-0.5 border-[6px] rounded-full p-2 z-50 border-violet-950 bg-zinc-800/5"
-		>
-			<span class="bg-amber-400 w-2.5 h-2.5 rounded-full absolute right-0 -top-0.5"></span>
-
-			<div class="relative">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					class="size-6 stroke-white"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-					/>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-					/>
-				</svg>
-			</div>
-		</div>
-	</swiper-slide>
-	<swiper-slide class="h-full min-w-full p-4 !pr-2 rounded-3xl overflow-hidden z-10">
-		<img
-			src="https://homeq-media-live.s3.amazonaws.com/1440/apartment_images/e6451c67b4284baf8ccd2ce2802aaf79.jpeg"
-			alt="Empire Heights Apartment"
-			class="object-cover w-full h-full relative z-10 rounded-3xl"
-		/>
-		<div class="absolute bottom-0 left-0 p-4 px-8 pb-7 text-white z-10 flex flex-col w-full">
-			<h2 class="text-3xl font-bold mb-1">Empire Heights</h2>
-			<div class="flex w-full justify-between">
-				<div class="">
-					<div class="flex items-center text-sm mb-1">
-						<svg
-							class="w-4 h-4 mr-1"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-							></path>
-						</svg>
-						1500 sq ft
-					</div>
-					<div class="flex items-center text-sm mb-2">
-						<svg
-							class="w-4 h-4 mr-1"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-							></path>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-							></path>
-						</svg>
-						Asheville, NC
-					</div>
-				</div>
-				<div class="text-2xl font-extrabold">7700 SEK</div>
-			</div>
-		</div>
-		<div
-			class="absolute top-2 right-0.5 border-[6px] rounded-full p-2 z-50 border-violet-950 bg-zinc-800/5"
-		>
-			<span class="bg-amber-400 w-2.5 h-2.5 rounded-full absolute right-0 -top-0.5"></span>
-
-			<div class="relative">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					class="size-6 stroke-white"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-					/>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-					/>
-				</svg>
-			</div>
-		</div>
-	</swiper-slide>
-	<swiper-slide>Slide 2</swiper-slide>
-</swiper-container>
-
-<style>
-</style>
+		<!--	</div>-->
+	</div>
+	<div
+		class="h-[calc(100%-15rem)] rounded-xl p-4 bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg"
+	>
+		d
+	</div>
+</div>
