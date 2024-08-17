@@ -1,5 +1,9 @@
 <script lang="ts">
-	const { steps = [], currentStep = 0 }: { steps: Array<number>; currentStep: number } = $props();
+	const {
+		steps = [],
+		currentStep = 0,
+		class: className
+	}: { steps: Array<number>; currentStep: number; class: string } = $props();
 	import { steps as Steps } from '$lib/states.svelte';
 </script>
 
@@ -24,8 +28,8 @@
 	{/if}
 	{#each steps as step, index}
 		<div
-			class={`h-1 flex-grow rounded-full transition-all duration-300 ${
-				index + 1 <= currentStep ? 'bg-amber-500' : 'bg-gray-400 opacity-90'
+			class={`h-1 flex-grow rounded-full transition-all duration-300  ${
+				index + 1 <= currentStep ? 'bg-amber-500' : `bg-gray-400  ${className} opacity-90`
 			}`}
 		></div>
 	{/each}

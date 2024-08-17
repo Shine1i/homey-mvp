@@ -11,6 +11,7 @@
 		AdjustmentsHorizontal,
 		Bell
 	} from 'svelte-hero-icons';
+	import SwiperContainer from '$lib/components/app/SwiperContainer.svelte';
 	const buttons = [
 		{ text: 'Nearby', current: true },
 		{ text: 'Shared', current: false },
@@ -18,7 +19,7 @@
 	];
 </script>
 
-<div class=" flex flex-col gap-5 col-span-full">
+<div class=" flex flex-col gap-2.5 col-span-full">
 	<!--  bg-purple-700-->
 	<div
 		class="bg-black p-4 flex flex-col h-fit mt-2 rounded-xl gap-5 col-span-full bg-opacity-30 backdrop-filter backdrop-blur-lg"
@@ -70,8 +71,8 @@
 		<!--	</div>-->
 	</div>
 	<div
-		class="h-[calc(100%-15rem)] rounded-xl p-4 bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg"
+		class="h-[calc(100%-14.6rem)] rounded-xl p-4 bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg"
 	>
-		d
+		<SwiperContainer />
 	</div>
 </div>

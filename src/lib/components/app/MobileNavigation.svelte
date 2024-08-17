@@ -13,7 +13,7 @@
 <div class="fixed bottom-0 p-2 h-fit left-0 w-full">
 	<!--	<div class="absolute bottom-0 p-2 left-0 w-full bg-violet-400 blur-2xl z-20 h-12"></div>-->
 	<div
-		class="absolute bottom-0 w-full left-0 bg-gradient-to-t z-20 from-violet-500/85 via-purple-950 h-96 to-transparent opacity-40"
+		class="absolute bottom-0 pointer-events-none w-full left-0 bg-gradient-to-t z-20 from-violet-500/85 via-purple-950 h-96 to-transparent opacity-40"
 	></div>
 	<nav
 		class="fixed bottom-0 p-2 py-2.5 left-0 bg-[#1A1A2E]/80 z-20 backdrop-blur-2xl {className} w-full ring-1 ring-amber-400"
