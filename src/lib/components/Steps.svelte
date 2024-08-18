@@ -16,7 +16,7 @@
 				viewBox="0 0 24 24"
 				stroke-width="2"
 				stroke="currentColor"
-				class="size-6 stroke-white font-bold"
+				class="size-6 stroke-stone-500 font-bold"
 			>
 				<path
 					stroke-linecap="round"
@@ -29,7 +29,7 @@
 	{#each steps as step, index}
 		<div
 			class={`h-1 flex-grow rounded-full transition-all duration-300  ${
-				index + 1 <= currentStep ? 'bg-amber-500' : `bg-gray-400  ${className} opacity-90`
+				index + 1 <= currentStep ? 'bg-emerald-300' : `bg-stone-400  ${className} opacity-90`
 			}`}
 		></div>
 	{/each}

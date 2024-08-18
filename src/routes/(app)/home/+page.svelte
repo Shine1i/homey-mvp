@@ -22,27 +22,27 @@
 <div class=" flex flex-col gap-2.5 col-span-full">
 	<!--  bg-purple-700-->
 	<div
-		class="bg-black p-4 flex flex-col h-fit mt-2 rounded-xl gap-5 col-span-full bg-opacity-30 backdrop-filter backdrop-blur-lg"
+		class="bg-stone-50 border border-stone-300 p-4 flex flex-col h-fit mt-2 rounded-xl gap-5 col-span-full backdrop-filter backdrop-blur-lg"
 	>
 		<section class="flex justify-between">
-			<div class="flex flex-col text-gray-200 gap-0.5">
+			<div class="flex flex-col text-stone-800 gap-0.5">
 				<div class="text-sm pl-0.5">Location</div>
-				<div class="font-bold text-white text-sm flex gap-1">
-					<Icon src={MapPin} class="size-5 text-violet-200" />
+				<div class="font-bold text-stone-500 text-sm flex gap-1">
+					<Icon src={MapPin} class="size-5 text-stone-500" />
 					New York, USA
-					<Icon src={ChevronDown} class="size-5 text-violet-200" />
+					<Icon src={ChevronDown} class="size-5 text-stone-500" />
 				</div>
 			</div>
 			<button
 				type="button"
-				class="rounded-xl bg-[#1A1A2E]/80 p-1.5 border-b border-amber-400 px-2.5 text-violet-200 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				class="rounded-xl bg-emerald-400/50 p-1.5 border-b border-emerald-400 px-2.5 text-stone-800 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 			>
-				<Icon src={Bell} class="size-5 stroke-violet-200" />
+				<Icon src={Bell} class="size-5 stroke-emerald-800" />
 			</button>
 		</section>
 		<div class="flex items-center w-full justify-evenly gap-2">
 			<span
-				class="isolate bg-[#1A1A2E]/80 ring-1 w-full justify-evenly ring-slate-800 border-b text-violet-200 border-amber-400 border-opacity-85 py-1 rounded-lg flex gap-3"
+				class="isolate bg-emerald-400/50 backdrop-filter backdrop-blur-2xl ring-1 w-full justify-evenly ring-emerald-200 border-b text-stone-800 border-emerald-400 border-opacity-85 py-1 rounded-lg flex gap-3"
 			>
 				{#each buttons as button, index}
 					<button
@@ -54,7 +54,7 @@
 					>
 						{#if button.current}
 							<span
-								class="absolute top-1 left-1/2 transform -translate-x-1/2 -translate-y-1 bg-amber-400 h-1.5 w-1.5 rounded-full"
+								class="absolute top-1 left-1/2 transform -translate-x-1/2 -translate-y-1 bg-cyan-100 h-1.5 w-1.5 rounded-full"
 							></span>
 						{/if}
 						{button.text}
@@ -63,16 +63,14 @@
 			</span>
 			<button
 				type="button"
-				class="rounded-xl border-b border-amber-400 border-opacity-85 bg-gray-900/55 p-3 px-2.5 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				class="rounded-xl border-b border-emerald-400 border-opacity-85 bg-emerald-400/50 p-3 px-2.5 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 			>
-				<Icon src={AdjustmentsHorizontal} class="size-5 stroke-violet-200" />
+				<Icon src={AdjustmentsHorizontal} class="size-5 stroke-emerald-800" />
 			</button>
 		</div>
 		<!--	</div>-->
 	</div>
-	<div
-		class="h-[calc(100%-14.6rem)] rounded-xl p-4 bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg"
-	>
+	<div class="h-[calc(100%-14.6rem)] rounded-xl p-4 bg-stone-200 backdrop-filter backdrop-blur-lg">
 		<SwiperContainer />
 	</div>
 </div>

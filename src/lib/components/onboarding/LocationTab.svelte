@@ -5,11 +5,11 @@
 
 <ul in:fly={{ x: 300, duration: 350 }} role="list" class=" px-4 flex flex-col pb-4">
 	<li class="flex py-0 text-black">
-		<h1 class="text-2xl font-medium text-[#E0E0E0]">Set your location</h1>
+		<h1 class="text-2xl font-medium text-stone-800">Set your location</h1>
 	</li>
 	<li class=" py-4 text-black">
 		<div>
-			<label for="email" class="block text-sm font-medium leading-6 text-[#B0B0B0]"
+			<label for="email" class="block text-sm font-medium leading-6 text-stone-500"
 				>Enter a location</label
 			>
 			<div class="relative mt-2 rounded-md shadow-sm">
@@ -31,7 +31,7 @@
 					type="text"
 					name="phone-number"
 					id="phone-number"
-					class="block rounded-lg bg-zinc-400/20 py-2 pl-10 w-full outline-none ring-1 ring-inset ring-gray-700 border-0 py-1.5 focus:outline-none focus:ring-0 text-gray-200 placeholder:text-gray-400 focus:bg-zinc-400/40 sm:text-sm sm:leading-6"
+					class="block rounded-lg bg-stone-200 py-2 pl-10 w-full outline-none ring-1 ring-opacity-25 ring-inset ring-stone-400 border-0 py-1.5 focus:outline-none focus:ring-0 text-gray-200 placeholder:text-gray-400 focus:bg-zinc-400/40 sm:text-sm sm:leading-6"
 					placeholder="e. g. Horsensgatan 182"
 				/>
 			</div>
@@ -43,7 +43,7 @@
 				steps.currentStep++;
 			}}
 			type="button"
-			class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+			class="w-full rounded-xl bg-gradient-to-r from-emerald-400 via-emerald-300 to-cyan-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
 		>
 			Next
 		</button>

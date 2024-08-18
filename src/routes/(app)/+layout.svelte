@@ -3,9 +3,7 @@
 	import MobileNavigation from '$lib/components/app/MobileNavigation.svelte';
 </script>
 
-<div
-	class="absolute inset-0 bg-gradient-to-b from-violet-500/85 via-purple-950 h-1/2 to-transparent opacity-40"
-></div>
+<!--<div class="absolute inset-0 h-1/2 to-transparent opacity-40"></div>-->
 <div class="container mx-auto z-10 px-4 grid grid-cols-4 !h-dvh gap-4">
 	<slot />
 	<MobileNavigation class="w-[calc(100%)] " />

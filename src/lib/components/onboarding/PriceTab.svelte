@@ -34,8 +34,8 @@
 
 <ul in:fly={{ x: 300, duration: 350 }} role="list" class=" px-4 flex flex-col ga-4 pb-4">
 	<li class="flex flex-col py-4 pb-12 text-black">
-		<h1 class="text-2xl font-medium text-[#E0E0E0] py-4">Select price range</h1>
-		<h3 class="text-[#B0B0B0] font-medium text-sm">What price range would you like in a flat?</h3>
+		<h1 class="text-2xl font-medium text-stone-800 py-4">Select price range</h1>
+		<h3 class="text-stone-500 font-medium text-sm">What price range would you like in a flat?</h3>
 	</li>
 	<li class=" py-4 text-black">
 		<RangeSlider
@@ -58,7 +58,7 @@
 	<li class="flex flex-col py-4 text-black">
 		<div class="flex items-center justify-between">
 			<span class="flex flex-grow flex-col">
-				<span class="text-sm font-medium leading-6 text-[#B0B0B0]" id="availability-label"
+				<span class="text-sm font-medium leading-6 text-stone-400" id="availability-label"
 					>I want to share a room</span
 				>
 			</span>
@@ -74,7 +74,7 @@
 				<!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
 				<span
 					aria-hidden="true"
-					class="pointer-events-none inline-block h-5 w-5 translate-x-0 transform rounded-full bg-white shadow ring-1 ring-amber-400 transition duration-200 ease-in-out"
+					class="pointer-events-none inline-block h-5 w-5 translate-x-0 transform rounded-full bg-white shadow ring-1 ring-stone-400 transition duration-200 ease-in-out"
 				></span>
 			</button>
 		</div>
@@ -85,7 +85,7 @@
 				steps.currentStep++;
 			}}
 			type="button"
-			class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+			class="w-full rounded-xl bg-gradient-to-r from-emerald-400 via-emerald-300 to-cyan-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
 		>
 			Next
 		</button>

@@ -24,7 +24,8 @@
 	out:fly={{ y: 300, duration: 250 }}
 	class="z-50 fixed w-full flex items-end bottom-0"
 >
-	<div class="bg-[#1A1A2E]/90 text-[#E0E0E0] w-full relative h-[70%] p-4 rounded-t-xl">
+	<!--	g-stone-200/80-->
+	<div class="bg-stone-50 text-stone-700 w-full relative h-[70%] p-4 rounded-t-xl">
 		<button onclick={closePopup} class="absolute top-4 left-4">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -38,10 +39,10 @@
 			</svg>
 		</button>
 		<div class="flex justify-center flex-col items-center py-6 gap-2">
-			<img src="/lock-front-gradient.png" class="h-auto w-24" alt="" />
+			<img src="/lock-front-clay.png" class="h-auto w-24" alt="" />
 			<div class="flex flex-col items-center gap-1 mt-4">
 				<h1 class="font-sans font-semibold text-3xl">Your data protected!</h1>
-				<h3 class="text-sm text-wrap text-[#B0B0B0]">
+				<h3 class="text-sm text-wrap text-stone-500">
 					Enter your phone number. We will send you a confirmation
 				</h3>
 			</div>
@@ -51,7 +52,7 @@
 						<div class="relative">
 							<button
 								type="button"
-								class="relative w-[7rem] cursor-default bg-zinc-200 text-black rounded-xl py-2.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								class="relative w-[7rem] cursor-default bg-stone-200 text-black ring-opacity-25 rounded-xl py-2.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-stone-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
 								aria-haspopup="listbox"
 								aria-expanded="true"
 								aria-labelledby="listbox-label"
@@ -121,7 +122,7 @@ To: "opacity-0"
 						type="text"
 						name="phone-number"
 						id="phone-number"
-						class="block rounded-xl bg-zinc-200 w-full outline-none ring-1 ring-inset ring-gray-700 border-0 py-1.5 focus:outline-none focus:ring-0 text-gray-900 placeholder:text-gray-500 focus:bg-zinc-100 sm:text-sm sm:leading-6"
+						class="block rounded-xl bg-stone-200 w-full outline-none ring-1 ring-opacity-25 ring-inset ring-stone-400 border-0 py-1.5 focus:outline-none focus:ring-0 text-gray-900 placeholder:text-gray-500 focus:bg-zinc-100 sm:text-sm sm:leading-6"
 						placeholder="(73) 987-6543"
 					/>
 				</div>
@@ -132,7 +133,7 @@ To: "opacity-0"
 							goto('/onboarding');
 						}}
 						type="button"
-						class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+						class="w-full rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-stone-800 shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 					>
 						Sign up
 					</button>
@@ -143,7 +144,7 @@ To: "opacity-0"
 							goto('/onboarding');
 						}}
 						type="button"
-						class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+						class="w-full rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-stone-800 shadow-sm hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 					>
 						Log in
 					</button>
@@ -151,7 +152,7 @@ To: "opacity-0"
 
 				<div class="relative w-full">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
-						<div class="w-full border-t border-gray-600"></div>
+						<div class="w-full border-t border-stone-400"></div>
 					</div>
 					<div class="relative flex justify-center">
 						<span class="px-2 text-sm bg-gray-200 text-black rounded-lg">or</span>
@@ -160,7 +161,7 @@ To: "opacity-0"
 				<div class="flex flex-col gap-4 w-full">
 					<button
 						type="button"
-						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-purple-200 px-4 py-1 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-stone-200 px-4 py-1 text-sm font-semibold text-stone-800 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
 						<img src="/BankID.svg" class="-ml-0.5 h-10 w-auto" alt="" />
 						{isDisplayed.isRegister ? 'Log in' : 'Continue'} with BankId
@@ -170,7 +171,7 @@ To: "opacity-0"
 							goto('/onboarding');
 						}}
 						type="button"
-						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-purple-200 px-4 py-1 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						class="inline-flex w-full justify-center items-center gap-x-2 rounded-xl bg-stone-200 px-4 py-1 text-sm font-semibold text-stone-800 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 					>
 						<img
 							src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
@@ -179,13 +180,13 @@ To: "opacity-0"
 						/>
 						{isDisplayed.isRegister ? 'Log in' : 'Continue'} with Google
 					</button>
-					<div class="font-medium text-[#B0B0B0] text-sm flex gap-2 justify-center">
+					<div class="font-medium text-stone-500 text-sm flex gap-2 justify-center">
 						{isDisplayed.isRegister ? 'Arleady have an account?' : 'Dont have an account?'}
 						<button
 							onclick={() => {
 								isDisplayed.isRegister = false;
 							}}
-							class="text-amber-300 font-bold"
+							class="text-emerald-500 font-bold"
 							>{isDisplayed.isRegister ? 'Log in' : 'Register'}</button
 						>
 					</div>

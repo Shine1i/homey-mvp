@@ -10,14 +10,14 @@
 
 <ul in:fly={{ x: 300, duration: 350 }} role="list" class=" px-4 flex flex-col ga-4 pb-4">
 	<li class="flex flex-col py-4 text-black">
-		<h1 class="text-2xl font-medium text-[#E0E0E0]">Set your profile</h1>
+		<h1 class="text-2xl font-medium text-stone-800">Set your profile</h1>
 	</li>
 
 	<li class="flex flex-col gap-6 py-4 text-black">
 		{#each options as option}
 			<div class="flex items-center justify-between">
 				<span class="flex flex-grow flex-col">
-					<span class="text-sm leading-6 text-[#E0E0E0] font-medium" id="availability-label"
+					<span class="text-sm leading-6 text-stone-500 font-medium" id="availability-label"
 						>{option.text}</span
 					>
 				</span>
@@ -25,8 +25,8 @@
 				<button
 					type="button"
 					class="relative {option.enabled
-						? '!bg-amber-400'
-						: 'bg-gray-200'} inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-violet-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
+						? '!bg-emerald-400'
+						: 'bg-gray-200'} inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-stone-300 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
 					role="switch"
 					aria-checked="false"
 					aria-labelledby="availability-label"
@@ -36,14 +36,14 @@
 						aria-hidden="true"
 						class="pointer-events-none inline-block h-5 w-5 {option.enabled
 							? 'translate-x-5'
-							: 'translate-x-0'} transform rounded-full bg-white shadow ring-1 ring-amber-400 transition duration-200 ease-in-out"
+							: 'translate-x-0'} transform rounded-full bg-white shadow ring-1 ring-stone-400 transition duration-200 ease-in-out"
 					></span>
 				</button>
 			</div>
 		{/each}
 		<div class="flex items-center justify-between">
 			<span class="flex flex-grow flex-col">
-				<span class="text-sm leading-6 text-[#E0E0E0] font-medium" id="availability-label"
+				<span class="text-sm leading-6 text-stone-500 font-medium" id="availability-label"
 					>My chronotype
 				</span>
 			</span>
@@ -51,7 +51,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"
-				class="size-5 stroke-gray-400 fill-gray-400"
+				class="size-5 stroke-stone-400 fill-gray-400"
 			>
 				<path
 					fill-rule="evenodd"
@@ -62,7 +62,7 @@
 		</div>
 		<div class="flex items-center justify-between">
 			<span class="flex flex-grow flex-col">
-				<span class="text-sm leading-6 text-[#E0E0E0] font-medium" id="availability-label"
+				<span class="text-sm leading-6 text-stone-500 font-medium" id="availability-label"
 					>My social type
 				</span>
 			</span>
@@ -70,7 +70,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"
-				class="size-5 stroke-gray-400 fill-gray-400"
+				class="size-5 stroke-stone-400 fill-stone-400"
 			>
 				<path
 					fill-rule="evenodd"
@@ -86,7 +86,7 @@
 				steps.currentStep++;
 			}}
 			type="button"
-			class="w-full rounded-full bg-amber-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+			class="w-full rounded-xl bg-gradient-to-r from-emerald-400 via-emerald-300 to-cyan-400 px-4 py-3 text-sm font-semibold text-black shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
 		>
 			Next
 		</button>

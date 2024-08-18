@@ -23,9 +23,9 @@
 }
 #PriceGradient {
     /** colors for the handles and range */
-    --color1: hsl(219, 73%, 65%);
-    --color2: hsl(283, 100%, 69%);
-    --colorMix: hsl(43, 89%, 52%);
+    --color1:  #10b981;
+    --color2: rgb(110 231 183) ;
+    --colorMix:  #22d3ee;
     --range-pip: #ccc;
     --range-pip-in-range: var(--colorMix);
 
@@ -73,7 +73,7 @@
 
 #PriceGradient .rangeBar {
     height: 100%;
-    background: linear-gradient(90deg, var(--color1), var(--color2), #FFD000);
+    background: linear-gradient(90deg, var(--color1), var(--color2), #22d3ee);
 }
 
 #PriceGradient .rangeHandle[data-handle='1'] {
@@ -100,8 +100,8 @@
 #PriceGradient .rangeFloat {
     border-radius: 0.5em;
     padding: 0.2em 0.6em;
-    background: white;
-    color: black;
+    background: rgb(250 250 249);
+    color: rgb(41 37 36);
     font-weight: bold;
     border: 2px solid var(--color);
     top: -1em;
@@ -142,7 +142,9 @@
 #PriceGradient.down .rangeHandle.active .rangeFloat {
     transform: translate(-40%, -100%) rotateZ(15deg);
 }
-
+.rangeSlider{
+    @apply bg-stone-300 !important
+}
 /** style the pips when active and in range */
 #PriceGradient .pip {
     height: 2px;
@@ -158,4 +160,26 @@
 }
 
 
+@keyframes moveLight {
+    0% {
+        transform: translateX(100%) skew(-45deg);
+    }
+    100% {
+        transform: translateX(-100%) skew(-45deg);
+    }
+}
 
+.light-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(100%) skew(-45deg);
+    animation: moveLight 3s infinite;
+}
+
+button:hover .light-effect {
+    animation-duration: 1.5s;
+}
