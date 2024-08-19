@@ -12,18 +12,18 @@
 
 <div class="fixed bottom-0 p-2 h-fit left-0 w-full">
 	<!--	<div class="absolute bottom-0 p-2 left-0 w-full bg-violet-400 blur-2xl z-20 h-12"></div>-->
-	<div
-		class="absolute bottom-0 pointer-events-none w-full left-0 bg-gradient-to-t z-20 from-emerald-500/40 via-cyan-950/20 h-96 to-transparent opacity-40"
-	></div>
+	<!--	<div-->
+	<!--		class="absolute bottom-0 pointer-events-none w-full left-0 bg-gradient-to-t z-20 from-emerald-500/40 via-cyan-950/20 h-96 to-transparent opacity-40"-->
+	<!--	></div>-->
 	<nav
-		class="fixed bottom-0 p-2 py-2.5 left-0 bg-stone-50 z-20 backdrop-blur-2xl {className} w-full ring-1 ring-emerald-400"
+		class="fixed bottom-0 p-2 py-3.5 left-0 bg-emerald-50 z-20 backdrop-blur-2xl {className} w-full"
 	>
 		<div class="flex justify-evenly gap-8 items-center">
 			{#each navItems as item}
 				<div class="flex group">
 					<a
 						href="#"
-						class=" {item.current ? 'text-emerald-400' : 'text-stone-400'} hover:text-amber-400"
+						class=" {item.current ? 'text-emerald-400' : 'text-stone-800'} hover:text-amber-400"
 					>
 						<span class="flex flex-col gap-1.5 items-center">
 							<div class="relative">
