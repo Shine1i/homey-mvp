@@ -7,9 +7,12 @@
 	import ImageSteps from '$lib/components/app/ImageSteps.svelte';
 
 	let listings: Listing[] = [];
-	onMount(() => {
+	onMount(async () => {
+		const url = `http://localhost:3000/listings?lat=59.3793&lon=13.5036`;
+		const response = await fetch(url);
+
 		if (Listings && Array.isArray(Listings.results)) {
-			listings = Listings.results.slice(17, 40) as unknown as Listing[];
+			listings = await response.json();
 
 			if (listings.length > 0) {
 				totalSteps = listings.map((listing) => listing.images.length);
@@ -23,43 +26,25 @@
 	let currentSteps: number[] = [];
 	let totalSteps: number[] = [];
 
-	let touchStartY: number | null = null;
-	let touchEndY: number | null = null;
-	const minSwipeDistance = 50;
-
-	const onTouchStart = (e: TouchEvent) => {
-		touchEndY = null;
-		touchStartY = e.targetTouches[0].clientY;
-	};
-
-	const onTouchMove = (e: TouchEvent) => {
-		touchEndY = e.targetTouches[0].clientY;
-	};
-
-	const onTouchEnd = (index: number) => {
-		if (!touchStartY || !touchEndY) return;
-		const verticalDistance = touchStartY - touchEndY;
-		const isUpSwipe = verticalDistance > minSwipeDistance;
-
-		if (isUpSwipe) {
-			console.log('swiped up');
-		}
-
-		touchStartY = null;
-		touchEndY = null;
-	};
-
 	const onTap = (e: TouchEvent, index: number) => {
 		const elementWidth = (e.currentTarget as HTMLElement).offsetWidth;
 		const tapX = e.changedTouches[0].clientX;
 		const isLeftTap = tapX < elementWidth / 2;
 		const isRightTap = tapX >= elementWidth / 2;
 
-		if (isLeftTap) changeImage('left', index);
-		if (isRightTap) changeImage('right', index);
+		if (isLeftTap) {
+			console.log('Changing image to the left');
+			changeImage('left', index);
+		}
+		if (isRightTap) {
+			console.log('Changing image to the right');
+			changeImage('right', index);
+		}
 	};
 
 	const changeImage = (direction: 'left' | 'right', index: number) => {
+		console.log('changeImage called with direction:', direction, 'and index:', index);
+
 		if (direction === 'left' && currentSteps[index] > 0) {
 			currentSteps[index]--;
 		}
@@ -74,7 +59,7 @@
 	grab-cursor={false}
 	effect="cards"
 	loop={true}
-	class="text-white w-full h-full"
+	class="text-white w-full overflow-scroll h-full"
 	cards-effect-slide-shadows={false}
 	cards-effect-rotate={false}
 	cards-effect-per-slide-rotate={0.5}
@@ -83,80 +68,114 @@
 	{#each listings as listing, index}
 		<swiper-slide
 			lazy="true"
-			ontouchstart={(e) => onTouchStart(e)}
-			ontouchmove={(e) => onTouchMove(e)}
 			ontouchend={(e) => {
-				onTouchEnd(index);
+				console.log('ontouchend event for swiper-slide', index);
 				onTap(e, index);
 			}}
-			class="bg-gradient-to-t from-emerald-500 to-cyan-300 relative rounded-xl w-full h-full"
+			class="bg-stone-200 relative rounded-xl max-h-[550px] w-full h-full overflow-scroll"
 		>
 			<div
 				class="absolute h-10 bg-gradient-to-b from-emerald-500/30 to-transparent flex items-center z-50 top-0 w-full px-4"
 			>
 				<ImageSteps totalSteps={totalSteps[index]} currentStep={currentSteps[index]} />
 			</div>
-			<div class="h-full relative">
+			<div class="h-full relative overflow-scroll pointer-events-none">
 				{#key listing.images[currentSteps[index]]}
 					<img
-						src={listing.images[currentSteps[index]]?.image}
-						class="rounded-xl h-full object-cover"
+						src={`https://wsrv.nl/?url=${listing.images[currentSteps[index]]?.image}&w=700&h=750&output=webp`}
+						class="rounded-xl h-full max-h-[550px] object-cover pointer-events-none"
 						alt=""
 						loading="lazy"
 					/>
 				{/key}
-				<section class="z-20 absolute bottom-0 p-4 w-full">
-					<div
-						class="absolute bg-gradient-to-t inset-0 from-black/90 to-transparent z-0 -bottom-2"
-					></div>
-					<h1 class="text-2xl font-bold relative z-20 items-center flex justify-between">
-						{listing.title}
-						<span
-							class="inline-flex self-start items-center gap-x-1.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ring-stone-200"
-						>
-							<svg class="h-1.5 w-1.5 fill-green-500" viewBox="0 0 6 6" aria-hidden="true">
-								<circle cx="3" cy="3" r="3" />
-							</svg>
-							Renovated
-						</span>
-					</h1>
-					<ul class="flex w-full z-20 justify-between items-center">
-						<li class="flex gap-0.5 z-20 flex-col text-sm items-center">
-							<span class="flex items-center gap-0.5">
-								<Icon src={ArrowsPointingOut} class="size-4 stroke-stone-50" />
-								<!--								<Hiking />-->
-								{listing.area} m²
-							</span><span class="flex self-start items-center gap-0.5">
-								<Bed class="size-4" />
-								<!--								<Hiking />-->
-								{listing.rooms}
-							</span>
-						</li>
-						<li class="text-xl z-20 font-bold flex flex-col">
-							{listing.rent} SEK
-							<div class="mt-2 flex self-end items-center space-x-3">
-								{#if listing.object_ad.object_ad.has_bathtub}
-									<div class="flex items-center">
-										<Bathtub class="size-4" />
-									</div>
-								{/if}
-								{#if listing.object_ad.object_ad.tv_included}
-									<div class="flex items-center">
-										<Tv class="size-4" />
-									</div>
-								{/if}
-								{#if listing.object_ad.object_ad.heat_included}
-									<div class="flex items-center">
-										<Heat_pump class="size-4" />
-									</div>
-								{/if}
-							</div>
-						</li>
-					</ul>
-				</section>
 			</div>
-			<!--			<h2>Slide {index + 1}</h2>-->
-			<!--			<p>{listing.title}</p>-->
+			<div class="max-w-2xl bg-stone-50 border border-stone-500 m-auto relative">
+				<div class="p-4 rounded-lg shadow-md flex justify-between items-start">
+					<div class="w-full">
+						<div class="flex justify-between items-center">
+							<div>
+								<div class="text-2xl font-semibold text-stone-800">8038 kr</div>
+								<div class="text-sm text-stone-500">2.0 rum • 67 m²</div>
+							</div>
+							<div class="ml-4">
+								<div
+									class="w-12 h-12 rounded-xl bg-stone-500 flex items-center justify-center text-sm"
+								>
+									Map
+								</div>
+							</div>
+						</div>
+
+						<hr class="my-2" />
+						<ul class="w-full">
+							<li class="flex justify-between items-center">
+								<div class="text-sm text-stone-500">Kontraktstyp</div>
+								<div class="text-sm text-stone-800">Tillsvidare</div>
+							</li>
+							<li class="flex justify-between items-center">
+								<div class="text-sm text-stone-500 mt-1">Sortering</div>
+								<div class="text-sm text-stone-800">Strikt efter köpoäng</div>
+							</li>
+							<li class="flex justify-between items-center">
+								<div class="text-sm text-stone-500 mt-1">Inflyttningsdatum</div>
+								<div class="text-sm text-stone-800">2024-12-01</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="text-stone-800 mt-4 text-2xl p-4">
+					{listing.title}
+
+					<p class="text-sm line-clamp-4">{listing.object_ad.description}</p>
+				</div>
+			</div>
+			<section class="z-20 absolute bottom-0 p-4 w-full">
+				<div
+					class="absolute bg-gradient-to-t inset-0 from-black/90 to-transparent z-0 -bottom-2"
+				></div>
+				<h1 class="text-2xl font-bold relative z-20 items-center flex justify-between">
+					{listing.title}
+					<span
+						class="inline-flex self-start items-center gap-x-1.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ring-stone-200"
+					>
+						<svg class="h-1.5 w-1.5 fill-green-500" viewBox="0 0 6 6" aria-hidden="true">
+							<circle cx="3" cy="3" r="3" />
+						</svg>
+						56% Match
+					</span>
+				</h1>
+				<ul class="flex w-full z-20 justify-between items-center">
+					<li class="flex gap-0.5 z-20 flex-col text-sm items-center">
+						<span class="flex items-center gap-0.5">
+							<Icon src={ArrowsPointingOut} class="size-4 stroke-stone-50" />
+							{listing.area} m²
+						</span><span class="flex self-start items-center gap-0.5">
+							<Bed class="size-4" />
+							{listing.rooms}
+						</span>
+					</li>
+					<li class="text-xl z-20 font-bold flex flex-col">
+						{listing.rent} SEK
+						<div class="mt-2 flex self-end items-center space-x-3">
+							{#if listing.object_ad.has_bathtub}
+								<div class="flex items-center">
+									<Bathtub class="size-4" />
+								</div>
+							{/if}
+							{#if listing.object_ad.tv_included}
+								<div class="flex items-center">
+									<Tv class="size-4" />
+								</div>
+							{/if}
+							{#if listing.object_ad.heat_included}
+								<div class="flex items-center">
+									<Heat_pump class="size-4" />
+								</div>
+							{/if}
+						</div>
+					</li>
+				</ul>
+			</section>
 		</swiper-slide>
 	{/each}
 </swiper-container>

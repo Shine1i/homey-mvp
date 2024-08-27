@@ -22,7 +22,7 @@
 			{#each navItems as item}
 				<div class="flex group">
 					<a
-						href="#"
+						href="/map"
 						class=" {item.current ? 'text-emerald-400' : 'text-stone-800'} hover:text-amber-400"
 					>
 						<span class="flex flex-col gap-1.5 items-center">
