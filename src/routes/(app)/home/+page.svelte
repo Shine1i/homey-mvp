@@ -115,11 +115,11 @@
 		<!--		</div>-->
 		<!--	</div>-->
 	</div>
-	<!--	<div-->
-	<!--		class="h-[calc(100%-11rem)] rounded-xl p-4 bg-stone-50 backdrop-filter backdrop-blur-lg drop-shadow-2xl"-->
-	<!--	>-->
-	<!--		<SwiperContainer />-->
-	<!--	</div>-->
+	<div
+		class="h-[calc(100%-11rem)] rounded-xl p-4 bg-stone-50 backdrop-filter backdrop-blur-lg drop-shadow-2xl"
+	>
+		<SwiperContainer />
+	</div>
 	<ul class="flex gap-4 justify-center relative bottom-14">
 		<li>
 			<button

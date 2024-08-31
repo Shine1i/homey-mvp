@@ -1,31 +1,49 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Listings from './Listings.json';
 	import type { Listing } from '$lib/utils';
-	import { AdjustmentsHorizontal, ArrowsPointingOut, Home, Icon } from 'svelte-hero-icons';
+	import { ArrowsPointingOut, Icon } from 'svelte-hero-icons';
 	import { Bathtub, Tv, Heat_pump, Bed } from 'svelte-google-materialdesign-icons';
 	import ImageSteps from '$lib/components/app/ImageSteps.svelte';
+	import Nescesities from '$lib/components/Nescesities.svelte';
 
 	let listings: Listing[] = [];
+	let currentSteps: number[] = [];
+	let totalSteps: number[] = [];
+	let swiperEl: HTMLElement;
+
 	onMount(async () => {
 		const url = `http://localhost:3000/listings?lat=59.3793&lon=13.5036`;
 		const response = await fetch(url);
+		listings = await response.json();
 
-		if (Listings && Array.isArray(Listings.results)) {
-			listings = await response.json();
-
-			if (listings.length > 0) {
-				totalSteps = listings.map((listing) => listing.images.length);
-				currentSteps = listings.map(() => 0);
-			}
-		} else {
-			console.error('Listings or Listings.results is not an array:', Listings);
+		if (listings.length > 0) {
+			totalSteps = listings.map((listing) => listing.images.length);
+			currentSteps = listings.map(() => 0);
 		}
+
+		// Initialize Swiper events
+		swiperEl = document.querySelector('swiper-container');
+		swiperEl.addEventListener('swiperslidechange', handleSlideChange);
+		swiperEl.addEventListener('swiperslidenexttransitionstart', handleSlideNext);
+		swiperEl.addEventListener('swiperslideprevtransitionstart', handleSlidePrev);
 	});
 
-	let currentSteps: number[] = [];
-	let totalSteps: number[] = [];
+	const handleSlideChange = (event) => {
+		const [swiper] = event.detail;
+		// console.log('Slide changed', swiper);
+		// Add your general slide change logic here
+	};
 
+	const handleSlidePrev = (event) => {
+		const [swiper] = event.detail;
+		console.log('Swiped to previous slide', swiper.activeIndex);
+		// Add your logic for swiping left here
+	};
+	const handleSlideNext = (event) => {
+		const [swiper] = event.detail;
+		console.log('Swiped to next slide', swiper.activeIndex);
+		// Add your logic for swiping right here
+	};
 	const onTap = (e: TouchEvent, index: number) => {
 		const elementWidth = (e.currentTarget as HTMLElement).offsetWidth;
 		const tapX = e.changedTouches[0].clientX;
@@ -33,18 +51,14 @@
 		const isRightTap = tapX >= elementWidth / 2;
 
 		if (isLeftTap) {
-			console.log('Changing image to the left');
 			changeImage('left', index);
 		}
 		if (isRightTap) {
-			console.log('Changing image to the right');
 			changeImage('right', index);
 		}
 	};
 
 	const changeImage = (direction: 'left' | 'right', index: number) => {
-		console.log('changeImage called with direction:', direction, 'and index:', index);
-
 		if (direction === 'left' && currentSteps[index] > 0) {
 			currentSteps[index]--;
 		}
@@ -58,6 +72,7 @@
 <swiper-container
 	grab-cursor={false}
 	effect="cards"
+	slides-per-view="1"
 	loop={true}
 	class="text-white w-full overflow-scroll h-full"
 	cards-effect-slide-shadows={false}
@@ -89,7 +104,7 @@
 					/>
 				{/key}
 			</div>
-			<div class="max-w-2xl bg-stone-50 border border-stone-500 m-auto relative">
+			<div class="max-w-2xl bg-stone-50 border m-auto relative">
 				<div class="p-4 rounded-lg shadow-md flex justify-between items-start">
 					<div class="w-full">
 						<div class="flex justify-between items-center">
@@ -98,11 +113,13 @@
 								<div class="text-sm text-stone-500">2.0 rum • 67 m²</div>
 							</div>
 							<div class="ml-4">
-								<div
+								<img
+									src="https://geo.homeq.se/api/v3/maps?latitude={listing.location
+										.coordinates[1]}&longitude={listing.location
+										.coordinates[0]}&width=900&height=400&zoom=13"
 									class="w-12 h-12 rounded-xl bg-stone-500 flex items-center justify-center text-sm"
-								>
-									Map
-								</div>
+									alt="location"
+								/>
 							</div>
 						</div>
 
@@ -126,7 +143,18 @@
 				<div class="text-stone-800 mt-4 text-2xl p-4">
 					{listing.title}
 
-					<p class="text-sm line-clamp-4">{listing.object_ad.description}</p>
+					<p class="text-sm line-clamp-3 text-stone-500">{listing.object_ad.description}</p>
+					<!--					<div class="flex flex-col gap-3">-->
+					<!--						<div>Location</div>-->
+					<!--						<img-->
+					<!--							src="https://geo.homeq.se/api/v3/maps?latitude={listing.location-->
+					<!--								.coordinates[1]}&longitude={listing.location-->
+					<!--								.coordinates[0]}&width=900&height=400&zoom=13"-->
+					<!--							class="w-full h-40 rounded-xl bg-stone-500 flex items-center justify-center text-sm"-->
+					<!--							alt="location"-->
+					<!--						/>-->
+					<!--					</div>-->
+					<Nescesities object_ad={listing.object_ad} />
 				</div>
 			</div>
 			<section class="z-20 absolute bottom-0 p-4 w-full">

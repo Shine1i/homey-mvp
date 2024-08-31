@@ -17,7 +17,7 @@ interface Location {
 	lon: number;
 }
 
-interface ObjectAdDetails {
+export interface ObjectAdDetails {
 	campaign_id: null | number;
 	is_renovated: boolean;
 	heat_included: boolean;
